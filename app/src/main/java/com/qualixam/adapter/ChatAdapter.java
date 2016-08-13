@@ -74,7 +74,7 @@ public class ChatAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, final int position) {
-        holder.name.setText(""+ mDataset.get(position).getName());
+        holder.name.setText("Name:  "+ mDataset.get(position).getName()+"\nPhone: "+mDataset.get(position).getNumber()+"");
     }
     public void addItem(ChatListData dataObj, int index) {
         mDataset.add(dataObj);

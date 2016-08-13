@@ -567,19 +567,19 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         country = addresses.get(0).getCountryName();
         postalCode = addresses.get(0).getPostalCode();
         knownName = addresses.get(0).getFeatureName();
-        Log.d("address", address);
-        Log.d("locality", locality);
-        Log.d("city", city);
-        Log.d("state", state);
-        Log.d("country", country);
-        Log.d("postalCode", postalCode);
-        Log.d("knownName", knownName);
+        Log.d("address", ""+address);
+        Log.d("locality", ""+locality);
+        Log.d("city", ""+city);
+        Log.d("state", ""+state);
+        Log.d("country", ""+country);
+        Log.d("postalCode", ""+postalCode);
+        Log.d("knownName", ""+knownName);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.v(this.getClass().getSimpleName(), "onPause()");
+        Log.v(this.getClass().getSimpleName()+"", "onPause()");
 
         //Disconnect from API onPause()
         if (mGoogleApiClient.isConnected()) {

@@ -120,7 +120,7 @@ public class ChatListActivity extends AppCompatActivity implements SwipeRefreshL
                     JSONObject object = array.getJSONObject(i);
                     String User_Mobile = object.getString("User_Mobile");
                     String User_ID = object.getString("User_ID");
-                    String User_LastName = object.getString("User_LastName");
+                    String User_LastName = object.getString("User_FirstName");
                     cntact.add(User_Mobile);
                     oldid.add(User_ID);
                     oldnamearr.add(User_LastName);
@@ -151,7 +151,7 @@ public class ChatListActivity extends AppCompatActivity implements SwipeRefreshL
         protected Void doInBackground(Void... voids) {
             for(int i=0;i<newnumber.size();i++)
             {
-                ChatListData data = new ChatListData(newid.get(i),newnamearr.get(i));
+                ChatListData data = new ChatListData(newid.get(i),newnamearr.get(i),newnumber.get(i));
                 results.add(i, data);
             }
             return null;
