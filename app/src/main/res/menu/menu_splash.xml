@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.qualixam.pinkhu.Splash">
+    <item
+        android:id="@+id/panic"
+        android:orderInCategory="100"
+        android:title="@string/panic_menu"
+        android:icon="@drawable/ic_directions_run_white_24dp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/chat"
+        android:orderInCategory="100"
+        android:title="@string/chat_menu"
+        android:icon="@drawable/ic_chat_bubble_outline_white_dp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bookmark"
+        android:orderInCategory="100"
+        android:title="@string/bookmark_menu"
+        android:icon="@drawable/ic_bookmark_white_24dp"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.qualixam.pinkhu.ChatPage">
+    <item
+        android:id="@+id/refresh"
+        android:orderInCategory="100"
+        android:title="Refresh"
+        android:icon="@drawable/ic_autorenew_white_24dp"
+        app:showAsAction="always" />
+    <item android:id="@+id/attach"
+        android:title="Attach"
+        android:icon="@drawable/ic_attach_file_white_dp"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+</menu>
