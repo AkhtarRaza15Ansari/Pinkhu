@@ -6,11 +6,12 @@ package com.qualixam.modal;
 public class ChatListData {
     private String registerid;
     private String name;
+    private String number;
 
-    public ChatListData(String registerid, String name){
+    public ChatListData(String registerid, String name,String number){
         this.registerid = registerid;
         this.name = name;
-
+        this.number = number;
     }
     public String getRegisterid(){
         return registerid;
@@ -21,8 +22,13 @@ public class ChatListData {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
+    }
+    public String getNumber() {
+        return number;
+    }
+    public void setNumber(String number) {
+        this.number= number;
     }
 }
