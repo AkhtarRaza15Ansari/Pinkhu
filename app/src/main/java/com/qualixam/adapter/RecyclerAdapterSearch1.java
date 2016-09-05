@@ -81,6 +81,7 @@ public class RecyclerAdapterSearch1 extends RecyclerView
                 detailIntent.putExtra("distance",mDataset.get(position).getName());
                 detailIntent.putExtra("offers",mDataset.get(position).getOffers());
                 detailIntent.putExtra("about",mDataset.get(position).getAbout());
+                detailIntent.putExtra("lastupdate",mDataset.get(position).getLastUpdated());
                 detailIntent.putExtra("ratings", mDataset.get(position).getRatings());
                 detailIntent.putExtra("email",mDataset.get(position).getEmail());
                 detailIntent.putExtra("mobile",mDataset.get(position).getPhone());

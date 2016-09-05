@@ -3,7 +3,7 @@
     package="com.qualixam.pinkhu">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -54,6 +54,11 @@
             android:theme="@style/myAppTheme" />
         <activity
             android:name=".DetailsPage"
+            android:label="@string/title_activity_details_page"
+            android:screenOrientation="portrait"
+            android:theme="@style/myAppTheme" />
+        <activity
+            android:name=".NextDetailsPage"
             android:label="@string/title_activity_details_page"
             android:screenOrientation="portrait"
             android:theme="@style/myAppTheme" />
@@ -187,7 +192,12 @@
             android:name=".ChatPage"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".UserSignUpPage" />
-        <activity android:name=".Filter"></activity>
+        <activity
+            android:name=".Filter"
+            android:label="@string/title_activity_details_page"
+            android:screenOrientation="portrait"
+            android:theme="@style/myAppTheme" />
+        <activity android:name=".DonateAnything"></activity>
     </application>
 
 </manifest>

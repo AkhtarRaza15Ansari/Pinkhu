@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.4"
-                android:padding="10dp"
+                android:padding="6dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -49,21 +49,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Medical Corner"
-                    android:textSize="22dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
+                    android:textSize="14dp"
                     android:text="Goregaon east" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:layout_weight="0.4"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -71,13 +70,14 @@
                 <TextView
                     android:id="@+id/text_ratings"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/blue"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:text="4.2"
-                    android:textColor="@color/white" />
+                    android:textSize="16dp"
+                    android:textColor="@color/blue"
+                    android:drawableTint="@color/blue"
+                    android:drawableRight="@drawable/staric" />
             </LinearLayout>
         </LinearLayout>
 
@@ -88,7 +88,10 @@
             android:layout_below="@+id/container_details"
             android:background="@color/white"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="06dp"
+            android:paddingTop="06dp">
 
             <View
                 android:id="@+id/seperator_line"
@@ -101,12 +104,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="07dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
+                    android:textStyle="bold"
                     android:text="Specialisation:"
                     android:textSize="12dp" />
 
@@ -115,7 +120,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
-                    android:textStyle="bold"
                     android:text="Medicals, Blood Banks"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -123,6 +127,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="07dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -130,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
                     android:text="@string/Address"
+                    android:textStyle="bold"
                     android:textSize="12dp" />
 
                 <TextView
@@ -138,20 +144,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
                     android:text="Near Oberoi Mall, Goregaon West, Mumbai"
-                    android:textStyle="bold"
                     android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="07dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
-                    android:text="Working Hours:"
+                    android:text="Working Hrs:"
+                    android:textStyle="bold"
                     android:textSize="12dp" />
 
                 <TextView
@@ -160,7 +167,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
                     android:text="24 Hours."
-                    android:textStyle="bold"
                     android:textSize="12dp" />
             </LinearLayout>
         </LinearLayout>

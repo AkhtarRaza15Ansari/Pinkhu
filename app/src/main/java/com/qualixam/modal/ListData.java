@@ -19,10 +19,11 @@ public class ListData {
     private String website;
     private String email;
     private String type;
+    private String lastupdated;
 
     public ListData(String registerid,String name, String address, String ratings,String specialisation,
                     String completeaddress, String workinghours,String phone,
-                    String distance, String offers,String about,String website, String email,String type){
+                    String distance, String offers,String about,String website, String email,String type,String lastupdated){
         this.registerid = registerid;
         this.name = name;
         this.address = address;
@@ -37,6 +38,7 @@ public class ListData {
         this.website = website;
         this.email = email;
         this.type = type;
+        this.lastupdated = lastupdated;
     }
     public String getRegisterid(){
         return registerid;
@@ -149,6 +151,15 @@ public class ListData {
     public void setType(String type)
     {
         this.type = type;
+    }
+
+    public String getLastUpdated()
+    {
+        return  lastupdated;
+    }
+    public void setLastUpdated(String lastupdated)
+    {
+        this.lastupdated = lastupdated;
     }
     /*
     * 1     NGO

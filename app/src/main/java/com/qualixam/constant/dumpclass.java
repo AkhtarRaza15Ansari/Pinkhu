@@ -97,6 +97,10 @@ public class dumpclass extends Activity {
 
     public static String sendImage = "mobileapp/uploadfile.php";
 
+    public static String getAllLocations = "mobileapp/listallfields.php";
+
+    public static String sendEmail = "mobileapp/sendEmail.php";
+
     public final static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
@@ -704,6 +708,36 @@ public class dumpclass extends Activity {
     public static String getUserPresent(String user_email) {
         try {
             String url = main_header + checkusers+"?User_Email="+user_email;
+            function1(url);
+            // add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            function2();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonvalues;
+    }
+    public static String getAllLocations(String user_id) {
+        try {
+            String url = main_header + getAllLocations + "?id="+user_id;
+            function1(url);
+            // add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            function2();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonvalues;
+    }
+    public static String SendEmail(String name,String contact_no,String email, String address,String amount) {
+        try {
+            String url = main_header + sendEmail + "?name="+name
+                    +"&contact_no="+contact_no+"&email_id="+email+
+                    "&donation_address="+address+"&donation_amount="+amount;
             function1(url);
             // add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);

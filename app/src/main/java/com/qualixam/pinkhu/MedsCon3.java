@@ -139,11 +139,12 @@ public class MedsCon3 extends Fragment implements SwipeRefreshLayout.OnRefreshLi
                     String about = jsonObject.getString("About");
                     String website = jsonObject.getString("Website");
                     String email = jsonObject.getString("Email");
+                    String lastupdated = jsonObject.getString("LastUpdated");
                     type = "6";
 
-                    ListData data = new ListData(RegisterID,name, address, ratings,specialisation,
+                    ListData data = new ListData(RegisterID,name, address,ratings,specialisation,
                             completeaddress, workinghours,phone,
-                            distance, offers,about,website,email,type);
+                            distance, offers,about,website,email,type,lastupdated);
                     results.add(i, data);
                 }
             } catch (Exception ex) {
@@ -194,10 +195,11 @@ public class MedsCon3 extends Fragment implements SwipeRefreshLayout.OnRefreshLi
             String about = ""+data.get(i).getAbout();
             String email = ""+data.get(i).getEmail();
             String website = ""+data.get(i).getWebsite();
+            String lastupdated = "";
             type = "3";
             ListData obj = new ListData(RegisterID,name, address,ratings,specialisation,
                     completeaddress, workinghours,phone,
-                    distance, offers,about,website,email,type);
+                    distance, offers,about,website,email,type,lastupdated);
             results.add(i, obj);
         }
         return results;

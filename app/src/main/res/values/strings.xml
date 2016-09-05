@@ -24,12 +24,12 @@
     <string name="MedsBank">MedsBank</string>
     <string name="Donate">DONATE ANYTHING</string>
     <string name="NGO">NGO</string>
-    <string name="More">More info:</string>
+    <string name="More">More Information</string>
     <string name="Address">Address:</string>
     <string name="ContactEmail">Email:</string>
     <string name="Website">Website:</string>
-    <string name="workinghours">Working Hours:</string>
-    <string name="Details">Details:</string>
+    <string name="workinghours">Working Hrs:</string>
+    <string name="Details">Details</string>
     <string-array name="nav_drawer_labels">
         <item>Home</item>
         <item>About Us</item>
@@ -38,7 +38,7 @@
     </string-array>
     <string name="title_activity_details_page">DetailsPage</string>
     <string name="lorem">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula sem a malesuada rhoncus. Pellentesque ut dolor a dui porttitor porta lacinia non libero. Nunc volutpat arcu quis quam convallis molestie. Etiam ac tristique sem, id commodo justo. Phasellus congue tincidunt lectus, at dignissim ligula maximus eu. Quisque interdum nunc eget tellus bibendum suscipit. Phasellus feugiat ultricies posuere. Nullam porta accumsan velit, ut rutrum massa fermentum eu. Nunc ac bibendum nunc. Mauris eu ultricies ipsum. Ut id dolor dui. Pellentesque dictum dui vel tempus maximus. Vivamus non nisi quis libero scelerisque pretium. Ut eu tristique justo. Sed pellentesque placerat quam, ut ultricies turpis feugiat a. Aliquam a volutpat risus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula sem a malesuada rhoncus.
     </string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_login">Login</string>
