@@ -124,9 +124,10 @@ public class SearchPage extends AppCompatActivity implements SwipeRefreshLayout.
                     String website = jsonObject.getString("Website");
                     String email = jsonObject.getString("Email");
                     String type = jsonObject.getString("type");
-                    ListData data = new ListData(RegisterID,name, address, ratings,specialisation,
+                    String lastupdated = jsonObject.getString("LastUpdated");
+                    ListData data = new ListData(RegisterID,name, address,ratings,specialisation,
                             completeaddress, workinghours,phone,
-                            distance, offers,about,website,email,type);
+                            distance, offers,about,website,email,type,lastupdated);
                     results.add(i, data);
                 }
             } catch (Exception ex) {
@@ -178,10 +179,11 @@ public class SearchPage extends AppCompatActivity implements SwipeRefreshLayout.
             String email = ""+data.get(i).getEmail();
             String website = ""+data.get(i).getWebsite();
             String type = ""+data.get(i).getType();
-            ListData obj = new ListData(RegisterID,name, address,ratings,specialisation,
+            String lastupdated = "";
+            ListData data = new ListData(RegisterID,name, address,ratings,specialisation,
                     completeaddress, workinghours,phone,
-                    distance, offers,about,website,email,type);
-            results.add(i, obj);
+                    distance, offers,about,website,email,type,lastupdated);
+            results.add(i, data);
         }
         return results;
     }

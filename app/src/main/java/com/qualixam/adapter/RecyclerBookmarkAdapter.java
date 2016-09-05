@@ -96,7 +96,7 @@ public class RecyclerBookmarkAdapter extends RecyclerView
     {
         String register_id;
         String RegisterID,name,address,ratings,specialisation,completeaddress,workinghours,phone,distance
-                ,offers,website,email;
+                ,offers,website,email,lastupdated;
         public BookmarkExtends(String register_id)
         {
             this.register_id = register_id;
@@ -136,7 +136,7 @@ public class RecyclerBookmarkAdapter extends RecyclerView
                     offers = jsonObject.getString("offers");
                     website = jsonObject.getString("Website");
                     email = jsonObject.getString("Email");
-
+                    lastupdated = jsonObject.getString("LastUpdated");
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -160,6 +160,7 @@ public class RecyclerBookmarkAdapter extends RecyclerView
             detailIntent.putExtra("email",email);
             detailIntent.putExtra("mobile",phone);
             detailIntent.putExtra("website", website);
+            detailIntent.putExtra("lastupdate",lastupdated);
             context.startActivity(detailIntent);
         }
     }

@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private LinearLayout alltiles;
     public static boolean refresh = false;
     public static int number = 0;
+    LinearLayout donate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +138,14 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         mGoogleApiClient.connect();
 
 
-
+        donate = (LinearLayout) findViewById(R.id.donate);
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,DonateAnything.class);
+                startActivity(i);
+            }
+        });
 
         mainimage = (ImageView) findViewById(R.id.mainimage);
         Picasso.with(MainActivity.this).load(R.drawable.cloud).into(mainimage);
@@ -485,7 +493,14 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             View view = layoutInflater.inflate(R.layout.view_pager_item, container, false);
 
             ImageView tView = (ImageView) view.findViewById(R.id.PageNumber);
-            Picasso.with(MainActivity.this).load(arrImage.get(position)).resize(225, 100).centerCrop().into(tView);
+            try{
+                Picasso.with(MainActivity.this).load(arrImage.get(position)).resize(225, 100).centerCrop().into(tView);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
             ((ViewPager) container).addView(view);
 
             view.setOnClickListener(new View.OnClickListener() {
