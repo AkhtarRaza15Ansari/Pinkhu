@@ -76,8 +76,8 @@ public class SecondRecyclerAdapter extends RecyclerView
     @Override
     public void onBindViewHolder(final DataObjectHolder holder, int position) {
         holder.text1.setText("Akhtar");
-        Log.d("image",mDataset.get(position).getmText1());
-        Picasso.with(context).load(mDataset.get(position).getmText1()).resize(150,75).centerCrop().into(holder.image1);
+        Log.d("image","http://demo.digitaledgetech.in/admin/Slider/"+mDataset.get(position).getmText1());
+        Picasso.with(context).load("http://demo.digitaledgetech.in/admin/Slider/"+mDataset.get(position).getmText1()).resize(150,75).centerCrop().into(holder.image1);
     }
 
     public void addItem(DataObject dataObj, int index) {

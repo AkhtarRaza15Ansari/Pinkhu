@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private LocationRequest mLocationRequest;
     private double currentLatitude;
     private double currentLongitude;
-    String address, locality, city, state, country, postalCode, knownName;
+    public static String address, locality, city, state, country, postalCode, knownName;
     ArrayList<String> tile_image,tile_title,tile_desc;
     ArrayList<String> array_images,array_url;
 
@@ -214,7 +214,22 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setTitle("Mumbai");
+
+        if(city!=null)
+        {
+            setTitle(""+city+" >");
+        }
+        else{
+            setTitle("Select City");
+        }
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,Filter.class);
+                startActivity(i);
+            }
+        });
         drawerFragment = (FragmentDrawer)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
@@ -235,8 +250,11 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             JSONObject object = array.getJSONObject(i);
 
             String SliderNo = object.getString("SliderNo");
-            if(SliderNo.equals("1")){
+            String image = object.getString("SliderImage");
+            if(SliderNo.equals("6")||SliderNo.equals("7")||SliderNo.equals("8")||SliderNo.equals("9")||SliderNo.equals("10")){
                 array1.put(object);
+                Log.d("slider",""+SliderNo);
+                Log.d("image",""+image);
             }
         }
         for(int i=0;i<array1.length();i++)
@@ -250,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         return results;
     }
 
-    private ArrayList<String> getDataSetString() {
+    private ArrayList<String> getDataSetString(){
         ArrayList<String> results = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             results.add("Item " + i);
@@ -452,6 +470,14 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             currentLongitude = location.getLongitude();
             try {
                 getLocation(currentLatitude, currentLongitude);
+
+                if(city!=null)
+                {
+                    setTitle(""+city+" >");
+                }
+                else{
+                    setTitle("Select City");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -494,7 +520,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
             ImageView tView = (ImageView) view.findViewById(R.id.PageNumber);
             try{
-                Picasso.with(MainActivity.this).load(arrImage.get(position)).resize(225, 100).centerCrop().into(tView);
+                Picasso.with(MainActivity.this).load("http://demo.digitaledgetech.in/admin/Slider/"+arrImage.get(position)).resize(225, 100).centerCrop().into(tView);
             }
             catch (Exception e)
             {
@@ -631,10 +657,12 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 {
                     JSONObject object = array.getJSONObject(i);
                     String SliderNo = object.getString("SliderNo");
-                    if(SliderNo.equals("2"))
-                    {
+
+                    if(SliderNo.equals("1")||SliderNo.equals("2")||SliderNo.equals("3")||SliderNo.equals("4")||SliderNo.equals("5")){
                         String image = object.getString("SliderImage");
                         String url = object.getString("URL");
+                        Log.d("slider",""+SliderNo);
+                        Log.d("image",""+image);
                         array_images.add(image);
                         array_url.add(url);
                     }
@@ -692,50 +720,74 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             alltiles.setVisibility(View.VISIBLE);
-            for(int i=0;i<tile_image.size();i++)
-            {
-                if(i==0){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images);
-                    textView1.setText(tile_title.get(i));
-                    textView2.setText(tile_desc.get(i));
-                }
-                if(i==1){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images1);
-                    textView3.setText(tile_title.get(i));
-                    textView4.setText(tile_desc.get(i));
-                }
-                if(i==2){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images2);
-                    textView5.setText(tile_title.get(i));
-                    textView6.setText(tile_desc.get(i));
-                }
-                if(i==3){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images3);
-                    textView7.setText(tile_title.get(i));
-                    textView8.setText(tile_desc.get(i));
-                }
-                if(i==4){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images4);
-                    textView9.setText(tile_title.get(i));
-                    textView10.setText(tile_desc.get(i));
-                }
-                if(i==5){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images5);
-                    textView11.setText(tile_title.get(i));
-                    textView12.setText(tile_desc.get(i));
-                }
-                if(i==6){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images6);
-                    textView13.setText(tile_title.get(i));
-                    textView14.setText(tile_desc.get(i));
-                }
-                if(i==7){
-                    Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images7);
-                    textView15.setText(tile_title.get(i));
-                    textView16.setText(tile_desc.get(i));
+            try {
+                for(int i=0;i<tile_image.size();i++)
+                {
+                    if(i==0){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images);
+                        textView1.setText(tile_title.get(i));
+                        textView2.setText(tile_desc.get(i));
+                    }
+                    if(i==1){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images1);
+                        textView3.setText(tile_title.get(i));
+                        textView4.setText(tile_desc.get(i));
+                    }
+                    if(i==2){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images2);
+                        textView5.setText(tile_title.get(i));
+                        textView6.setText(tile_desc.get(i));
+                    }
+                    if(i==3){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images3);
+                        textView7.setText(tile_title.get(i));
+                        textView8.setText(tile_desc.get(i));
+                    }
+                    if(i==4){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images4);
+                        textView9.setText(tile_title.get(i));
+                        textView10.setText(tile_desc.get(i));
+                    }
+                    if(i==5){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images5);
+                        textView11.setText(tile_title.get(i));
+                        textView12.setText(tile_desc.get(i));
+                    }
+                    if(i==6){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images6);
+                        textView13.setText(tile_title.get(i));
+                        textView14.setText(tile_desc.get(i));
+                    }
+                    if(i==7){
+                        Picasso.with(MainActivity.this).load(tile_image.get(i)).into(images7);
+                        textView15.setText(tile_title.get(i));
+                        textView16.setText(tile_desc.get(i));
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
 
+
+        }
+    }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        try{
+            if(city!=null)
+            {
+                setTitle(""+city+" >");
+            }
+            else{
+                setTitle("Select City");
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

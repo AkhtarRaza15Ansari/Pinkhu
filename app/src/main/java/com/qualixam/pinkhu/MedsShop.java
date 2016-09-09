@@ -1,8 +1,10 @@
 package com.qualixam.pinkhu;
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.qualixam.adapter.RecyclerAdapterSearch;
 import com.qualixam.adapter.RecyclerAdapterSearch1;
@@ -43,6 +49,7 @@ public class MedsShop extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     String state="", city="", locality="";
     String type;
     SwipeRefreshLayout swipeRefreshLayout;
+    Spinner spFilter;
     public MedsShop() {
         // Required empty public constructor
     }
@@ -76,8 +83,69 @@ public class MedsShop extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),Filter.class);
-                startActivity(i);
+                /*Intent i = new Intent(getActivity(),Filter.class);
+                startActivity(i);*/
+
+                final Dialog dialog;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    dialog = new Dialog(getActivity(), android.R.style.Theme_Material_Light_Dialog_Alert);
+                } else {
+                    dialog = new Dialog(getActivity());
+                }
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                // Include dialog.xml file
+                dialog.setContentView(R.layout.filter);
+                spFilter    = (Spinner) dialog.findViewById(R.id.spFilter);
+                // Spinner Drop down elements
+                List<String> categories = new ArrayList<String>();
+                categories.add("Sort By");
+                categories.add("Last Updated");
+                categories.add("Nearest Location");
+                categories.add("Most Rated");
+
+                // Creating adapter for spinner
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
+                // Drop down layout style - list view with radio button
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // attaching data adapter to spinner
+                spFilter.setAdapter(dataAdapter);
+                spFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        String item = adapterView.getItemAtPosition(i).toString();
+                        // Showing selected spinner item
+                        //Toast.makeText(Filter.this, "Selected: " + item, Toast.LENGTH_LONG).show();
+                        if(i==1)
+                        {
+                            MainActivity.number = 1;
+                            MainActivity.refresh = true;
+                            resume();
+                            dialog.dismiss();
+                        }
+                        else if(i==2)
+                        {
+                            MainActivity.number = 2;
+                            MainActivity.refresh = true;
+                            resume();
+                            dialog.dismiss();
+                        }
+                        else if(i==3)
+                        {
+                            MainActivity.number = 3;
+                            MainActivity.refresh = true;
+                            resume();
+                            dialog.dismiss();
+                        }
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+                dialog.show();
             }
         });
         return view;
@@ -208,11 +276,19 @@ public class MedsShop extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         }
         return results;
     }
+
+    @Override
     public void onResume()
     {
         super.onResume();
+        Log.d("Coming here","outside");
+        resume();
+    }
+
+    public void resume(){
         if(MainActivity.refresh)
         {
+            Log.d("Coming here","inside");
             swipeRefreshLayout.setRefreshing(true);
             new Type().execute();
             MainActivity.refresh = false;
